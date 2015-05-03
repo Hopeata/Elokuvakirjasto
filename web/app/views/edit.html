@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div ng-controller="EditingController">        
+    <h1>Edit movie</h1>
+    <form name="infoForm">
+        <p>
+            <label>Name</label>
+            <input name="name" type="text" ng-model="name" required ng-minlength="1">
+        </p>
+        <div ng-show="infoForm.name.$invalid">
+            You have to put the name!
+        </div>
+
+        <p>
+            <label>Director</label>
+            <input name="director" type="text" ng-model="director" required ng-minlength="1">
+        </p>
+
+        <p>
+            <label>Release year</label>
+            <input name="release" type="text" ng-model="release" ng-pattern="dddd">
+        </p>
+        <div ng-show="infoForm.release.$invalid">
+            The year has to be in form of YYYY!
+        </div>
+        <p>
+            <label>Description</label>
+            <input name="description" type="text" ng-model="description"  required ng-minlength="2">
+        </p>
+        <div ng-show="infoForm.description.$invalid && infoForm.description.$dirty">
+            You have to add the description!
+        </div>
+        <p>
+            <button type="submit" ng-disabled="!infoForm.$valid" ng-click="edit()">Save</button>
+        </p>
+    </form>
+</div>
+
+

@@ -1,0 +1,34 @@
+<div ng-controller="AddingController" class="form-group">        
+    <h1>Add new movie</h1>
+    <form name="infoForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input name="name" type="text" ng-model="name" required ng-minlength="1">
+        </div>
+
+        <div class="form-group">
+            <label>Director</label>
+            <input name="director" type="text" ng-model="director" required ng-minlength="1">
+        </div>
+
+        <div class="form-group">
+            <label>Release year</label>
+            <input name="release" type="text" ng-model="release" required ng-minglength="4" ng-pattern="dddd">
+        </div>
+        <div ng-show="infoForm.release.$invalid">
+            The year has to be in form of YYYY!
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-contro" rows="3" ng-model="description" required ng-minlength="2"></textarea>
+        </div>
+        <div ng-show="infoForm.description.$invalid && infoForm.description.$dirty">
+            You have to add the description!
+        </div>
+
+        <p>
+            <button type="submit" class="btn btn-default" ng-disabled="!infoForm.$valid" ng-click="addMovie()">Submit</button>
+        </p>
+    </form>
+</div>
